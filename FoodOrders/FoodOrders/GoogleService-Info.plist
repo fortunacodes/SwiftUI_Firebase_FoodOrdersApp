@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>628982207941-np4cu29g7q45o85v1np03ofvc2l52pvo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.628982207941-np4cu29g7q45o85v1np03ofvc2l52pvo</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAC45NzkbF63MHgSI4XE0SMUzo1NcCPoaw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>628982207941</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>jesus.fortuna.FoodOrders</string>
+	<key>PROJECT_ID</key>
+	<string>foodorders-60853</string>
+	<key>STORAGE_BUCKET</key>
+	<string>foodorders-60853.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:628982207941:ios:fda23d9b07f91755ef67ac</string>
+	<key>DATABASE_URL</key>
+	<string>https://foodorders-60853.firebaseio.com</string>
+</dict>
+</plist>
