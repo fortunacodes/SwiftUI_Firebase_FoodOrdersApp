@@ -70,7 +70,7 @@ class getUserData : ObservableObject{
 
                 self.datas.append( userData(id: id, name: name ?? "", street: street ?? "", door: door ?? "", mov1: mov1 ?? "", mov2: mov2 ?? "", noteRest: noteRest ?? "", noteRider: noteRider ?? "", email: email ?? "", userID: userID ?? "" )  )
                 
-                self.userDataAlone = userData(id: id, name: name ?? "", street: street ?? "", door: door ?? "", mov1: mov1 ?? "", mov2: mov2 ?? "", noteRest: noteRest ?? "",
+                self.userDataAlone = userData(id: id, name: name ?? "", street: "aasd", door: door ?? "", mov1: "asd", mov2: mov2 ?? "", noteRest: noteRest ?? "",
                     noteRider: noteRider ?? "" ,email: email ?? "", userID: userID ?? "")
             }
         }

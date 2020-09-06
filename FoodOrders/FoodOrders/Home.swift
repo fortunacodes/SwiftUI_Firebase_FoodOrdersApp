@@ -21,8 +21,8 @@ struct Home: View {
     @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? true
     @State var showCart = false
     @State var showProfile = false
-    
-    @ObservedObject var userData = getUserData()
+    @ObservedObject var activeUser = getActiveUser()
+//    @ObservedObject var userData = getUserData()
 
     var body: some View {
         
@@ -32,8 +32,7 @@ struct Home: View {
                 if self.status{
                     
                     VStack {
-                        Header(showCart: $showCart, showProfile: $showProfile)
-                        
+                        Header(showCart: $showCart, showProfile: $showProfile)                        
                         if self.store.datas.count != 0 {
                             StoreRows(store: store.datas, categoryTitle: "Cerca de ti")
                         }
@@ -51,6 +50,8 @@ struct Home: View {
                     
                     VStack {
                         Spacer()
+                        Text("\(self.activeUser.activeUserID)")
+
                         Button(action: {
     //                        self.alert.toggle()
                         }){
@@ -85,12 +86,13 @@ struct Home: View {
                     (_) in
                     self.status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
                 }
-                
-                
             }
             .sheet(isPresented: self.$showCart){
-                CartView(phone: self.userData.userDataAlone.mov1 , location: self.userData.userDataAlone.street )
+                //Call to see preview order and preview data user
                 
+                
+//                CartView(phone: self.userData.userDataAlone.mov1, location: self.userData.userDataAlone.street)
+                CartView()
             }
             
         }

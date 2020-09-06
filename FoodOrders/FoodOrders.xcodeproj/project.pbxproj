@@ -38,7 +38,6 @@
 		4EFCC0BD2495A2B900EC62B7 /* OrderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFCC0BC2495A2B900EC62B7 /* OrderView.swift */; };
 		4EFCC0C02495AAA600EC62B7 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 4EFCC0BF2495AAA600EC62B7 /* Lottie */; };
 		4EFCC0C22495ABAB00EC62B7 /* TestAnimations in Resources */ = {isa = PBXBuildFile; fileRef = 4EFCC0C12495ABAB00EC62B7 /* TestAnimations */; };
-		4EFE324B2493B8EF00935E02 /* ValeriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE324A2493B8EF00935E02 /* ValeriaView.swift */; };
 		A095072B977709E72F3E983D /* Pods_FoodOrders_FoodOrdersUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 217A445DED431CE7D69E833F /* Pods_FoodOrders_FoodOrdersUITests.framework */; };
 		C0923ACE24ABA8749EB9B9B8 /* Pods_FoodOrders.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CB829B94B059E2D62A9B033 /* Pods_FoodOrders.framework */; };
 /* End PBXBuildFile section */
@@ -98,7 +97,6 @@
 		4EC268DF2492D8E7001F4B17 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4EFCC0BC2495A2B900EC62B7 /* OrderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderView.swift; sourceTree = "<group>"; };
 		4EFCC0C12495ABAB00EC62B7 /* TestAnimations */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = TestAnimations; sourceTree = SOURCE_ROOT; };
-		4EFE324A2493B8EF00935E02 /* ValeriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValeriaView.swift; sourceTree = "<group>"; };
 		56C03645C32B484F589EC7A6 /* Pods-FoodOrders.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodOrders.release.xcconfig"; path = "Target Support Files/Pods-FoodOrders/Pods-FoodOrders.release.xcconfig"; sourceTree = "<group>"; };
 		5CB829B94B059E2D62A9B033 /* Pods_FoodOrders.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodOrders.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		91A930B758AA580C61D0D00D /* Pods-FoodOrdersTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodOrdersTests.debug.xcconfig"; path = "Target Support Files/Pods-FoodOrdersTests/Pods-FoodOrdersTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -239,7 +237,6 @@
 		4EB8C9972482A3070096BC54 /* ResourcesView */ = {
 			isa = PBXGroup;
 			children = (
-				4EFE324A2493B8EF00935E02 /* ValeriaView.swift */,
 				4E332CC9248188D10048D355 /* Reused.swift */,
 				4EB8C9982482CED80096BC54 /* Header.swift */,
 				4EB8C99F2482EA9A0096BC54 /* RectangleWithData.swift */,
@@ -519,7 +516,6 @@
 				4E395590248B22D7006A011C /* Cart.swift in Sources */,
 				4E39558E248B1E94006A011C /* Store.swift in Sources */,
 				4EC268DE2492BF88001F4B17 /* ProfileDetails.swift in Sources */,
-				4EFE324B2493B8EF00935E02 /* ValeriaView.swift in Sources */,
 				4EFCC0BD2495A2B900EC62B7 /* OrderView.swift in Sources */,
 				4EC268E02492D8E7001F4B17 /* User.swift in Sources */,
 				4EACFC62247C62D20098BC1E /* AppDelegate.swift in Sources */,

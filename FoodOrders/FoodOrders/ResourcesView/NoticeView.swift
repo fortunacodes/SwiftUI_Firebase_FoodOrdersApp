@@ -10,7 +10,10 @@ import SwiftUI
 
 struct NoticeView: View {
     @Binding var alert : Bool
-
+    @Binding var itemsDeleted : Bool
+    @ObservedObject var activeUser = getActiveUser()
+    @ObservedObject var cart = getCartData()
+    
     var body: some View {
         GeometryReader{
             _ in
@@ -27,7 +30,9 @@ struct NoticeView: View {
                     .font(.callout)
                 
                 Button(action: {
+                    self.itemsDeleted = true
                     self.alert.toggle()
+                    
                 }){
                     Text("Eliminar articulos")
                         .foregroundColor(.white)
@@ -39,6 +44,7 @@ struct NoticeView: View {
                 
                 Button(action: {
                     self.alert.toggle()
+                    
                 }){
                     Text("Cancelar")
                         .foregroundColor(.white)
@@ -61,6 +67,6 @@ struct NoticeView: View {
 
 struct NoticeView_Previews: PreviewProvider {
     static var previews: some View {
-        NoticeView(alert: .constant(false))
+        NoticeView(alert: .constant(false), itemsDeleted:  .constant(false))
     }
 }

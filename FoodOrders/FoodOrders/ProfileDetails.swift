@@ -166,22 +166,22 @@ struct ProfileDetails: View {
 
                     }
                     .onTapGesture {
+                        
+                        print("updating user\(self.activeUser.activeUserID) con mov1 \(self.mov1)" )
+                        
                         let db = Firestore.firestore()
                         print(self.mov1)
                         db.collection("users")
                             .document(self.activeUser.activeUserID)
                             .updateData(
-                                
                                 [
                                     "street" : self.street,
                                     "door" : self.door,
                                     "mov1" : self.mov1,
                                     "mov2" : self.mov2,
                                     "noteRestaurant" : self.noteRest,
-                                    "noteRider" : self.noteRider
-                                    
+                                    "noteRider" : self.noteRider                                    
                                 ]
-                                
                                 )
                             {
                                 (err) in

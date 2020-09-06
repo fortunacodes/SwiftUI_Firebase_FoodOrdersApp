@@ -21,10 +21,12 @@ struct CartView: View {
     
     @State var codeStore = ""
     
+    
     @Environment(\.presentationMode) var presentationMode
-    @State var phone : String
-    @State var location : String
+    @State var phone = ""
+    @State var location = ""
     @State var showProfileOpened = false
+    
     
     var body: some View {
         
@@ -89,34 +91,37 @@ struct CartView: View {
                         VStack {
                             
                             HStack{
-                                if  self.location == "" {
-                                    CartDataRows(ImageName: "mappin.and.ellipse", quantity: "", description: "Dejanos tu ubicación")
-                                    
-                                    
-                                }else{
+//                                if  self.userData.userDataAlone.street == "" {
+//                                    CartDataRows(ImageName: "mappin.and.ellipse", quantity: "", description: "Dejanos tu ubicación")
+//
+//                                }else{
                                     CartDataRows(ImageName: "mappin.and.ellipse", quantity: "",
-                                                 description: self.location)
-                                }
+                                                 description: self.phone == "" ? "Dejanos tu ubicación" : self.phone )
+//                                }
                                 Spacer()
                                 Image(systemName: "pencil")
 
                             }
                             HStack{
-                                if self.phone == "" {
-                                CartDataRows(ImageName: "phone.fill", quantity: "", description: "Dejanos donde llamarte")
-                            }else{
-                                CartDataRows(ImageName: "phone.fill", quantity: "",
-                                             description: self.phone)
-                            }
+//                                if self.userData.userDataAlone.mov1 == "" {
+//                                CartDataRows(ImageName: "phone.fill", quantity: "", description: "Dejanos donde llamarte")
+//                            }else{
+//                                CartDataRows(ImageName: "phone.fill", quantity: "",
+//                                             description: self.userData.userDataAlone.mov1)
+//                            }
+                                  CartDataRows(ImageName: "phone.fill", quantity: "",
+                                               description: self.location == "" ? "Dejanos donde llamarte" : self.location)
                                 Image(systemName: "pencil")
 
                             }
                         }
-                        
+
                     }
                     .onTapGesture {
                         self.showProfileOpened = true
                         self.showProfileDetails.toggle()
+                        self.phone = self.userData.userDataAlone.mov1
+                        self.location = self.userData.userDataAlone.street
                     }
                     //Barra Tiempo estimado
                     VStack {
@@ -281,31 +286,7 @@ struct CartView: View {
                                     
                                     
                                     
-                                    db.collection("cart")
-                                        .whereField("userID", isEqualTo: self.activeUser.activeUserID)
-                                        .getDocuments(){
-                                            (snap,err) in
-                                            
-                                            if err != nil{
-                                                print ((err?.localizedDescription)!)
-                                                return
-                                            }
-                                            
-                                            for i in snap!.documents{
-                                                
-                                                db.collection("cart")
-                                                    .document(i.documentID)
-                                                    .delete{
-                                                        (err) in
-                                                        
-                                                        if err != nil{
-                                                            print((err?.localizedDescription)!)
-                                                            return
-                                                        }
-                                                        
-                                                }
-                                            }
-                                    }
+                                    deleteCartData(activeUserID: self.activeUser.activeUserID)
                                     self.cartData.cartList.removeAll()
                                     self.showOrder.toggle()
                                     
@@ -373,8 +354,7 @@ struct CartView: View {
             
         }
         .padding(.top, 20)
-        
-        
+                
     }
     
 }
@@ -383,7 +363,7 @@ struct CartView: View {
 
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
-        CartView ( phone: "", location: "")
+        CartView ()
     }
 }
 

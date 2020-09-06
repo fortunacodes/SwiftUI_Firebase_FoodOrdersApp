@@ -63,12 +63,7 @@ struct Header: View {
                 }
                 
             }
-            .padding(.horizontal, 20)
-            
-            if showCart{
-                
-            }
-            
+            .padding(.horizontal, 20)            
         }
         
     }

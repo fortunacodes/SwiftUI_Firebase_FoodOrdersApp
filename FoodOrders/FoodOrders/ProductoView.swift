@@ -20,6 +20,7 @@ struct ProductoView: View {
     @ObservedObject var cart = getCartData()
     @State var price : Double = 0
     @State var alert = false
+    @State var itemsDeleted = false
     var body: some View {
         
         ZStack {
@@ -150,38 +151,24 @@ struct ProductoView: View {
                             .font(.system(size: 16, weight: .semibold, design: .rounded))
                             .shadow(radius: 7)
                             .onTapGesture {
-                                let db = Firestore.firestore()
-                                
                                 print("Que tiene? \(self.cart.codStore)")
                                 
-                                if self.product.codestore == self.cart.codStore || self.cart.codStore == ""{
-                                    db.collection("cart")
-                                        .document()
-                                        .setData(
-                                            [
-                                            "item" : self.product.name,
-                                             "codeStore" : self.product.codestore,
-                                             "quantity" : self.quantity,
-                                             "price" : self.price,
-                                             "itemID" : self.product.id,
-                                             "userID" : self.activeUser.activeUserID
-                                            ]
-                                            )
-                                        {
-                                            (err) in
-                                            if err != nil{
-                                                print((err?.localizedDescription)!)
-                                                return
-                                            }
-                                    }
-                                    
+                                if self.product.codestore == self.cart.codStore || self.cart.codStore == "" || self.itemsDeleted {
+                                    self.alert = false
+                                    self.addDataToTheCart()
                                     self.presentationMode.wrappedValue.dismiss()
-                                }else{
-                                    self.alert = true
+                                }
+                                else{
+                                    if self.itemsDeleted {
+                                        self.alert = false
+                                    }else{
+                                        self.alert = true
+
+                                    }
                                 }
                                 
                                 
-
+                                
                             }
                             
                             
@@ -199,15 +186,55 @@ struct ProductoView: View {
                 
             }
             if alert{
-                NoticeView(alert: self.$alert)
+                NoticeView(alert: self.$alert, itemsDeleted: self.$itemsDeleted)
+                    .onDisappear{
+                        print("DESAPARECIDO")
+                        if self.itemsDeleted {
+                            print("DESAPARECIDO2")
+                            deleteCartData(activeUserID: self.activeUser.activeUserID)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { // Change `2.0` to the desired number of seconds.
+                                   self.addDataToTheCart()
+                                }
+                            self.presentationMode.wrappedValue.dismiss()
+
+                        }
+                }
                 
             }           
-
+            
         }
         
         
     }
+    
+    func addDataToTheCart(){
+        let db = Firestore.firestore()
+        print("adding\(self.product.name) ")
+        db.collection("cart")
+                           .document()
+                           .setData(
+                               [
+                                   "item" : self.product.name,
+                                   "codeStore" : self.product.codestore,
+                                   "quantity" : self.quantity,
+                                   "price" : self.price,
+                                   "itemID" : self.product.id,
+                                   "userID" : self.activeUser.activeUserID
+                               ]
+                               )
+                           {
+                               (err) in
+                               if err != nil{
+                                   print((err?.localizedDescription)!)
+                                   return
+                               }
+                       }
+                       
+    }
+    
 }
+
+
 
 func getPrice(number: Double, quantity: Int) -> Float {
     print(number)
